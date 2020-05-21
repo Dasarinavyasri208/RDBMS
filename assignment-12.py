@@ -1,26 +1,3 @@
-class DoesNotExist(Exception):
-	pass
-
-class MultipleObjectsReturned(Exception):
-	pass
-
-class Student:
-	def __init__(self, name, age, score):
-		self.name = name
-		self.student_id = None
-		self.age = age
-		self.score = score
-
-	@staticmethod
-	def get(student_id=0,name="",score=-1,age=0):
-		if student_id != 0:
-			record = read_data(f"select * from Student where student_id={student_id}")
-		elif name != "":
-			record = read_data(f"select * from Student where name={name}")
-		elif score != -1:
-			record = read_data(f"select * from Student where score={score}")
-		elif age != 0:
-			record = read_data(f"select * from Student where age={age}")
 			
 		if len(record)==0:
 			raise DoesNotExist('DoesNotExist')
@@ -59,15 +36,4 @@ def write_data(sql_query):
 def read_data(sql_query):
 	import sqlite3
 	connection = sqlite3.connect("students.sqlite3")
-	crsr = connection.cursor()
-	crsr.execute(sql_query) 
-	ans= crsr.fetchall()  
-	connection.close() 
-	return ans
-
-#student_obj = Student(name="rakesh1",age=22,score=87)
-#student_obj.save()
-#s=Student.delete()
-#print(s)
-#print(s.student_id)
-#print(read_data("SELECT * FROM student"))
+	crsr
